@@ -1,5 +1,55 @@
 'use client'
 
+import { useForm, ValidationError } from '@formspree/react'
+
+function ContactForm() {
+  const [state, handleSubmit] = useForm('mqpawawv')
+
+  return (
+    <section className="contact-form" aria-labelledby="contact-form-heading">
+      <h2 id="contact-form-heading">Contact form</h2>
+      {state.succeeded ? (
+        <p className="contact-form-success" role="status">
+          Thanks. Your message has been sent.
+        </p>
+      ) : (
+        <form className="contact-form-fields" onSubmit={handleSubmit}>
+          <label htmlFor="contact-name">Name</label>
+          <input id="contact-name" type="text" name="name" autoComplete="name" />
+
+          <label htmlFor="contact-email">Email</label>
+          <input
+            id="contact-email"
+            type="email"
+            name="email"
+            autoComplete="email"
+            required
+          />
+          <ValidationError
+            prefix="Email"
+            field="email"
+            errors={state.errors}
+            className="contact-form-error"
+          />
+
+          <label htmlFor="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows={5} required />
+          <ValidationError
+            prefix="Message"
+            field="message"
+            errors={state.errors}
+            className="contact-form-error"
+          />
+
+          <button type="submit" disabled={state.submitting}>
+            {state.submitting ? 'Sending…' : 'Send message'}
+          </button>
+        </form>
+      )}
+    </section>
+  )
+}
+
 export default function Page() {
   return (
     <main className="site-shell">
@@ -177,10 +227,10 @@ export default function Page() {
         </section>
       </div>
       <footer className="site-footer">
-        <span>© {new Date().getFullYear()} Panteleimon Angelides</span>
-        <a href="mailto:panteleimon.angelidis@gmail.com">Get in touch 
-          <span aria-hidden="true">↗</span>
-        </a>
+        <ContactForm />
+        <div className="site-footer-meta">
+          <span>© {new Date().getFullYear()} Panteleimon Angelides</span>
+        </div>
       </footer>
     </main>
   )

@@ -100,8 +100,19 @@ h2 { color:var(--primary); letter-spacing:-.055em; margin:0 0 20px; font-size:cl
 .project-card h3 { color:var(--primary); letter-spacing:-.035em; margin:10px 0 0; font-size:25px; font-weight:400; }
 .project-card>p { max-width:570px; margin:24px 0 18px; font-size:16px; line-height:1.5; }
 .project-meta { margin:0; }
-.site-footer { border-top:1px solid var(--border-color); color:var(--secondary); padding-top:22px; font-size:13px; }
-.site-footer a { color:var(--accent); }
+.site-footer { border-top:1px solid var(--border-color); color:var(--secondary); padding-top:22px; font-size:13px; flex-direction:column; align-items:stretch; gap:28px; }
+.site-footer-meta { display:flex; justify-content:space-between; align-items:center; }
+.contact-form { max-width:640px; border:1px solid var(--border-color); background:#fbfdfc; border-radius:8px; padding:24px 26px; }
+.contact-form h2 { margin-bottom:8px; }
+.contact-form-fields { display:grid; gap:8px; }
+.contact-form label { margin-top:8px; color:var(--tag-text); letter-spacing:.13em; text-transform:uppercase; font:600 11px/1.4 Arial,sans-serif; }
+.contact-form input, .contact-form textarea { width:100%; color:var(--primary); background:#fff; border:1px solid var(--border-color); border-radius:8px; padding:12px 14px; font:16px/1.4 Georgia,'Times New Roman',serif; }
+.contact-form textarea { resize:vertical; }
+.contact-form button { justify-self:start; margin-top:8px; color:#fff; cursor:pointer; background:var(--accent); border:0; border-radius:8px; padding:12px 18px; font:600 13px Arial,sans-serif; }
+.contact-form button:hover { background:var(--accent-hover); }
+.contact-form button:disabled { cursor:progress; opacity:.6; }
+.contact-form-error { color:#9f1239; margin:0; font-size:13px; }
+.contact-form-success { margin:0; font-size:18px; line-height:1.45; }
 @page { size:A4; margin:0; }
 @media print {
   html,body { background:#fff; }
